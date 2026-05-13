@@ -547,4 +547,457 @@ renderProducts();
 renderFAQ();
 </script>
 </body>
+</html>            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-jac-900/95 backdrop-blur-lg border-t border-white/10">
+        <div class="px-6 py-4 flex flex-col gap-3">
+            <a href="#home" onclick="closeMobile()" class="text-white/80 hover:text-white py-2 text-sm font-medium">Inicio</a>
+            <a href="#productos" onclick="closeMobile()" class="text-white/80 hover:text-white py-2 text-sm font-medium">Productos</a>
+            <a href="#faq" onclick="closeMobile()" class="text-white/80 hover:text-white py-2 text-sm font-medium">FAQ</a>
+            <a href="#contacto" onclick="closeMobile()" class="text-white/80 hover:text-white py-2 text-sm font-medium">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://picsum.photos/seed/jacaranda-nature-diet/1920/1080" alt="" class="hero-bg w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-br from-jac-950/85 via-jac-900/75 to-jac-800/60"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <span class="inline-block bg-white/10 backdrop-blur-sm border border-white/20 text-jac-200 text-xs font-semibold tracking-widest uppercase px-5 py-2 rounded-full mb-6">Dietética en Quilmes</span>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-4">
+            Come Sano<span class="text-jac-300">..</span><br>Come Natural
+        </h1>
+        <p class="text-white/70 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+            Productos sin gluten, veganos y naturales. Todo lo que necesitás para una alimentación consciente, en un solo lugar.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#productos" class="inline-flex items-center justify-center gap-2 bg-jac-500 hover:bg-jac-400 text-white font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-jac-500/25">
+                Ver Productos
+                <span class="iconify" data-icon="lucide:arrow-down" data-width="16"></span>
+            </a>
+            <a href="https://wa.me/5491156610599?text=Hola!%20Quiero%20hacer%20una%20consulta%20sobre%20productos" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold text-sm px-8 py-3.5 rounded-full transition-all duration-300">
+                <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span>
+                Contactanos
+            </a>
+        </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <span class="iconify text-white/40" data-icon="lucide:chevron-down" data-width="28"></span>
+    </div>
+</section>
+
+<section id="productos" class="py-20 md:py-28 bg-jac-50/50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10 anim-up">
+            <span class="text-jac-500 text-xs font-semibold tracking-widest uppercase">Nuestros Productos</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3 tracking-tight">Lo mejor para tu alimentación</h2>
+            <p class="text-gray-500 mt-3 max-w-xl mx-auto">Explorá nuestras opciones sin gluten y veganas. Agregá al carrito y comprá fácil por WhatsApp.</p>
+        </div>
+        <div class="flex justify-center gap-3 mb-10 anim-up">
+            <button onclick="filterProducts('todos')" data-filter="todos" class="filter-btn active-filter px-6 py-2 rounded-full text-sm font-medium transition-all duration-300">Todos</button>
+            <button onclick="filterProducts('sin-gluten')" data-filter="sin-gluten" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all duration-300">Sin Gluten</button>
+            <button onclick="filterProducts('vegano')" data-filter="vegano" class="filter-btn px-6 py-2 rounded-full text-sm font-medium transition-all duration-300">Veganos</button>
+        </div>
+        <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        <div id="no-results" class="hidden text-center py-16">
+            <span class="iconify text-gray-200 mb-4 mx-auto" data-icon="lucide:search-x" data-width="56"></span>
+            <p class="text-gray-400 font-medium text-lg mb-1">No encontramos resultados</p>
+            <p class="text-gray-300 text-sm">Probá con otro término o <button onclick="clearSearch()" class="text-jac-500 hover:text-jac-600 underline">limpiá la búsqueda</button></p>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-20 md:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-12 anim-up">
+            <span class="text-jac-500 text-xs font-semibold tracking-widest uppercase">Preguntas Frecuentes</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-3 tracking-tight">¿Tenés dudas?</h2>
+        </div>
+        <div id="faq-container" class="anim-up flex flex-col gap-3"></div>
+    </div>
+</section>
+
+<section id="contacto" class="py-20 md:py-28 bg-jac-900 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-jac-700/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-14 anim-up">
+            <span class="text-jac-300 text-xs font-semibold tracking-widest uppercase">Contacto</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-3 tracking-tight">Vení a conocernos</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16">
+            <div class="anim-up space-y-8">
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-jac-700/50 flex items-center justify-center flex-shrink-0">
+                        <span class="iconify text-jac-300" data-icon="lucide:map-pin" data-width="20"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-1">Dirección</h4>
+                        <p class="text-jac-200/70 text-sm">Andrés Baranda 499, Quilmes, Buenos Aires</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-jac-700/50 flex items-center justify-center flex-shrink-0">
+                        <span class="iconify text-jac-300" data-icon="lucide:phone" data-width="20"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-1">WhatsApp</h4>
+                        <a href="https://wa.me/5491156610599" target="_blank" class="text-jac-300 hover:text-jac-200 text-sm transition-colors">+54 9 11 5661-0599</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-jac-700/50 flex items-center justify-center flex-shrink-0">
+                        <span class="iconify text-jac-300" data-icon="lucide:instagram" data-width="20"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-1">Instagram</h4>
+                        <a href="https://www.instagram.com/almacenjacaranda" target="_blank" class="text-jac-300 hover:text-jac-200 text-sm transition-colors">@almacenjacaranda</a>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 rounded-xl bg-jac-700/50 flex items-center justify-center flex-shrink-0">
+                        <span class="iconify text-jac-300" data-icon="lucide:clock" data-width="20"></span>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-semibold mb-1">Horarios</h4>
+                        <p class="text-jac-200/70 text-sm">Lun a Vie: 9:00 – 13:30 / 16:00 – 19:30</p>
+                        <p class="text-jac-200/70 text-sm">Sábados: 9:00 – 13:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="anim-up" style="animation-delay:.15s">
+                <a href="https://www.google.com/maps/search/Andr%C3%A9s+Baranda+499+Quilmes+Buenos+Aires" target="_blank" class="block rounded-2xl overflow-hidden border border-jac-700/50 hover:border-jac-500/50 transition-colors group">
+                    <div class="bg-jac-800/50 p-8 flex flex-col items-center justify-center min-h-[320px] relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-jac-700/20 to-transparent"></div>
+                        <div class="relative z-10 text-center">
+                            <span class="iconify text-jac-400 group-hover:text-jac-300 transition-colors mb-4" data-icon="lucide:map" data-width="56"></span>
+                            <p class="text-white font-semibold text-lg mb-2">Ver en Google Maps</p>
+                            <p class="text-jac-300/60 text-sm">Andrés Baranda 499, Quilmes</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-jac-950 py-14">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+            <div>
+                <div class="flex items-center gap-2.5 mb-4">
+                    <img src="https://i.postimg.cc/tg6G8WtW/2e3f3786-9294-4055-9ee8-d438b4985360.jpg" alt="Jacarandá" class="h-8 w-8 rounded-full object-cover ring-2 ring-jac-700/50">
+                    <span class="text-white font-semibold tracking-tight">JACARANDÁ</span>
+                </div>
+                <p class="text-jac-300/50 text-sm leading-relaxed">Come Sano..Come Natural<br>Tu dietética en Quilmes.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold text-sm mb-4">Navegación</h5>
+                <div class="flex flex-col gap-2.5">
+                    <a href="#home" class="text-jac-300/50 hover:text-jac-300 text-sm transition-colors">Inicio</a>
+                    <a href="#productos" class="text-jac-300/50 hover:text-jac-300 text-sm transition-colors">Productos</a>
+                    <a href="#faq" class="text-jac-300/50 hover:text-jac-300 text-sm transition-colors">FAQ</a>
+                    <a href="#contacto" class="text-jac-300/50 hover:text-jac-300 text-sm transition-colors">Contacto</a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-semibold text-sm mb-4">Seguinos</h5>
+                <div class="flex gap-3">
+                    <a href="https://www.instagram.com/almacenjacaranda" target="_blank" class="w-10 h-10 rounded-xl bg-jac-800/50 hover:bg-jac-700/50 flex items-center justify-center text-jac-300 hover:text-jac-200 transition-all">
+                        <span class="iconify" data-icon="lucide:instagram" data-width="18"></span>
+                    </a>
+                    <a href="https://wa.me/5491156610599" target="_blank" class="w-10 h-10 rounded-xl bg-jac-800/50 hover:bg-jac-700/50 flex items-center justify-center text-jac-300 hover:text-jac-200 transition-all">
+                        <span class="iconify" data-icon="lucide:message-circle" data-width="18"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-jac-800/50 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-jac-300/30 text-xs">© 2025 Jacarandá Dietética — Quilmes, Buenos Aires</p>
+            <a href="https://vidrro.com" target="_blank" class="text-jac-300/30 hover:text-jac-400/60 text-xs transition-colors duration-300">Diseñado y desarrollado by <span class="font-semibold">Vidrro</span></a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5491156610599?text=Hola!%20Quiero%20consultar%20por%20productos" target="_blank" class="fixed bottom-6 left-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110" title="Chateá con nosotros">
+    <span class="iconify text-white" data-icon="lucide:message-circle" data-width="26"></span>
+</a>
+
+<div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 hidden" onclick="toggleCart()"></div>
+<div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl hidden flex-col">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+        <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+            <span class="iconify text-jac-500" data-icon="lucide:shopping-bag" data-width="20"></span>
+            Tu Carrito
+        </h3>
+        <button onclick="toggleCart()" class="text-gray-400 hover:text-gray-600 transition-colors p-1">
+            <span class="iconify" data-icon="lucide:x" data-width="22"></span>
+        </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4"></div>
+    <div id="cart-footer" class="border-t border-gray-100 px-6 py-5 hidden">
+        <div class="flex justify-between items-center mb-4">
+            <span class="text-gray-600 font-medium">Total</span>
+            <span id="cart-total" class="text-2xl font-bold text-jac-700"></span>
+        </div>
+        <button onclick="sendWhatsApp()" class="w-full bg-green-500 hover:bg-green-400 text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25">
+            <span class="iconify" data-icon="lucide:message-circle" data-width="18"></span>
+            Comprar por WhatsApp
+        </button>
+        <button onclick="clearCart()" class="w-full mt-2 text-gray-400 hover:text-red-500 text-sm font-medium py-2 transition-colors">Vaciar carrito</button>
+    </div>
+</div>
+
+<div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+<script>
+const products = [
+    { id:1,  name:'Granola Artesanal Sin Gluten',   price:4500, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:wheat',        grad:'from-amber-50 to-orange-100', iconColor:'text-amber-500' },
+    { id:2,  name:'Leche de Almendras 1L',          price:3200, cat:'vegano',     badge:'Vegano',   icon:'lucide:droplets',      grad:'from-sky-50 to-cyan-100',   iconColor:'text-sky-500' },
+    { id:3,  name:'Harina de Coco 400g',            price:5100, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:package',       grad:'from-orange-50 to-yellow-100',iconColor:'text-orange-500' },
+    { id:4,  name:'Tofu Firme Orgánico 350g',       price:2800, cat:'vegano',     badge:'Vegano',   icon:'lucide:square',        grad:'from-emerald-50 to-green-100',iconColor:'text-emerald-500' },
+    { id:5,  name:'Galletas de Avena y Choco',      price:3600, cat:'vegano',     badge:'Vegano',   icon:'lucide:cookie',        grad:'from-amber-50 to-yellow-100', iconColor:'text-amber-600' },
+    { id:6,  name:'Quinoa Tricolor 500g',           price:4200, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:salad',         grad:'from-lime-50 to-green-100',  iconColor:'text-lime-600' },
+    { id:7,  name:'Pasta de Lentejas 250g',         price:3900, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:utensils',      grad:'from-red-50 to-orange-100',  iconColor:'text-red-400' },
+    { id:8,  name:'Hummus de Garbanzos 200g',       price:2500, cat:'vegano',     badge:'Vegano',   icon:'lucide:soup',          grad:'from-yellow-50 to-amber-100', iconColor:'text-yellow-600' },
+    { id:9,  name:'Aceite de Coco Virgen 500ml',    price:6500, cat:'vegano',     badge:'Vegano',   icon:'lucide:droplet',       grad:'from-cyan-50 to-teal-100',  iconColor:'text-teal-500' },
+    { id:10, name:'Semillas de Chía 250g',          price:2900, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:sprout',        grad:'from-green-50 to-emerald-100',iconColor:'text-green-500' },
+    { id:11, name:'Proteína de Guisante 500g',      price:8200, cat:'vegano',     badge:'Vegano',   icon:'lucide:flask-conical',  grad:'from-violet-50 to-purple-100',iconColor:'text-violet-500' },
+    { id:12, name:'Barritas de Cereal x6',          price:1800, cat:'sin-gluten', badge:'Sin TACC', icon:'lucide:bar-chart-3',    grad:'from-rose-50 to-pink-100',  iconColor:'text-rose-500' },
+];
+
+const faqs = [
+    { q:'¿Qué significa "Sin Gluten" / "Sin TACC"?', a:'Significa que el producto no contiene trigo, avena, cebada ni centeno (TACC). Es fundamental para personas con celiquía o intolerancia al gluten. Todos nuestros productos con esta etiqueta están libres de estos cereales.' },
+    { q:'¿Los productos veganos son 100% libres de ingredientes animales?', a:'Sí. Etiquetamos como "Vegano" a todo producto que no contiene ningún ingrediente de origen animal ni derivados, incluyendo leche, huevos, miel y cualquier aditivo de origen animal.' },
+    { q:'¿Realizan envíos a domicilio?', a:'Sí, hacemos envíos dentro de Quilmes y zonas cercanas. También coordinamos envíos por transporte para otras zonas. Consultá por WhatsApp para cotizar el envío a tu dirección.' },
+    { q:'¿Cómo hago para hacer un pedido?', a:'¡Muy fácil! Agregá los productos al carrito en esta página y al finalizar hacés clic en "Comprar por WhatsApp". Se abre un chat con tu pedido completo y listo para confirmar. También podés escribirnos directamente.' },
+    { q:'¿Qué medios de pago aceptan?', a:'En el local aceptamos efectivo, transferencia bancaria, Mercado Pago y tarjetas de débito/crédito. Para envíos, el pago es por transferencia o Mercado Pago anticipado.' },
+    { q:'¿Puedo retirar mi pedido en el local?', a:'¡Por supuesto! Podés armar tu carrito acá, enviarlo por WhatsApp y pasar a retirarlo en Andrés Baranda 499 durante nuestros horarios de atención.' },
+];
+
+let cart = [];
+let activeFilter = 'todos';
+let searchQuery = '';
+let cartOpen = false;
+let mobileOpen = false;
+let openFaq = -1;
+
+function getFilteredProducts() {
+    let list = activeFilter === 'todos' ? [...products] : products.filter(p => p.cat === activeFilter);
+    if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase().trim();
+        list = list.filter(p => p.name.toLowerCase().includes(q) || p.badge.toLowerCase().includes(q) || p.cat.replace('-',' ').includes(q));
+    }
+    return list;
+}
+
+function renderProducts() {
+    const grid = document.getElementById('products-grid');
+    const noRes = document.getElementById('no-results');
+    const filtered = getFilteredProducts();
+    grid.innerHTML = '';
+    if (filtered.length === 0) { grid.classList.add('hidden'); noRes.classList.remove('hidden'); return; }
+    grid.classList.remove('hidden'); noRes.classList.add('hidden');
+    filtered.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'anim-up bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-jac-200 hover:shadow-xl hover:shadow-jac-100/50 transition-all duration-500 group';
+        card.style.animationDelay = `${i * 0.06}s`;
+        const bc = p.badge === 'Sin TACC' ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700';
+        card.innerHTML = `
+            <div class="relative overflow-hidden h-48 bg-gradient-to-br ${p.grad} flex items-center justify-center">
+                <span class="iconify ${p.iconColor} group-hover:scale-110 transition-transform duration-500" data-icon="${p.icon}" data-width="56"></span>
+                <span class="absolute top-3 left-3 ${bc} text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full">${p.badge}</span>
+            </div>
+            <div class="p-5">
+                <h3 class="font-semibold text-gray-900 text-sm mb-2 leading-snug min-h-[40px]">${p.name}</h3>
+                <div class="flex items-end justify-between">
+                    <p class="text-xl font-bold text-jac-700">$${p.price.toLocaleString('es-AR')}</p>
+                    <button onclick="addToCart(${p.id})" class="flex items-center gap-1.5 bg-jac-500 hover:bg-jac-400 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all duration-300 hover:shadow-md hover:shadow-jac-300/30 active:scale-95">
+                        <span class="iconify" data-icon="lucide:plus" data-width="14"></span>
+                        Agregar
+                    </button>
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+    requestAnimationFrame(() => { grid.querySelectorAll('.anim-up').forEach(el => el.classList.add('visible')); });
+}
+
+function filterProducts(filter) {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active-filter');
+        if (b.dataset.filter === filter) b.classList.add('active-filter');
+    });
+    renderProducts();
+}
+
+function handleSearch(val) {
+    searchQuery = val;
+    document.getElementById('search-clear').classList.toggle('hidden', !val);
+    if (val.trim()) {
+        const sec = document.getElementById('productos');
+        const rect = sec.getBoundingClientRect();
+        if (rect.top > 200 || rect.bottom < 0) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    renderProducts();
+}
+
+function clearSearch() {
+    searchQuery = '';
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.add('hidden');
+    renderProducts();
+}
+
+function styleFilters() {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        if (b.classList.contains('active-filter')) {
+            b.style.background='#7C3AED';b.style.color='#fff';b.style.boxShadow='0 4px 14px rgba(124,58,237,.3)';
+        } else {
+            b.style.background='#F5F3FF';b.style.color='#6D28D9';b.style.boxShadow='none';
+        }
+    });
+}
+const filterObs = new MutationObserver(styleFilters);
+document.querySelectorAll('.filter-btn').forEach(b => filterObs.observe(b,{attributes:true,attributeFilter:['class']}));
+styleFilters();
+
+function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    const ex = cart.find(x => x.id === id);
+    if (ex) ex.qty++; else cart.push({id:p.id,name:p.name,price:p.price,qty:1});
+    updateBadge(); renderCartItems(); showToast('✓ ' + p.name + ' agregado');
+}
+function removeFromCart(id) { cart = cart.filter(x => x.id !== id); updateBadge(); renderCartItems(); }
+function changeQty(id, d) {
+    const item = cart.find(x => x.id === id); if (!item) return;
+    item.qty += d; if (item.qty <= 0) { removeFromCart(id); return; }
+    updateBadge(); renderCartItems();
+}
+function clearCart() { cart = []; updateBadge(); renderCartItems(); showToast('Carrito vaciado'); }
+function updateBadge() {
+    const badge = document.getElementById('cart-badge');
+    const total = cart.reduce((s,i) => s + i.qty, 0);
+    if (total > 0) { badge.textContent = total; badge.classList.remove('hidden'); badge.classList.add('badge-pop'); setTimeout(() => badge.classList.remove('badge-pop'), 300); }
+    else badge.classList.add('hidden');
+}
+function renderCartItems() {
+    const box = document.getElementById('cart-items'), footer = document.getElementById('cart-footer');
+    if (!cart.length) {
+        box.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-center py-16"><span class="iconify text-gray-200 mb-4" data-icon="lucide:shopping-bag" data-width="64"></span><p class="text-gray-400 font-medium mb-1">Tu carrito está vacío</p><p class="text-gray-300 text-sm">Agregá productos para comenzar</p></div>`;
+        footer.classList.add('hidden'); return;
+    }
+    footer.classList.remove('hidden');
+    let html = '', total = 0;
+    cart.forEach(item => {
+        const sub = item.price * item.qty; total += sub;
+        html += `<div class="flex gap-4 py-4 border-b border-gray-50 last:border-0"><div class="flex-1 min-w-0"><p class="text-sm font-semibold text-gray-900 truncate">${item.name}</p><p class="text-xs text-gray-400 mt-0.5">$${item.price.toLocaleString('es-AR')} c/u</p><div class="flex items-center gap-3 mt-2.5"><button onclick="changeQty(${item.id},-1)" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors text-sm font-bold">−</button><span class="text-sm font-semibold text-gray-900 w-5 text-center">${item.qty}</span><button onclick="changeQty(${item.id},1)" class="w-7 h-7 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600 transition-colors text-sm font-bold">+</button></div></div><div class="flex flex-col items-end justify-between"><button onclick="removeFromCart(${item.id})" class="text-gray-300 hover:text-red-400 transition-colors p-0.5"><span class="iconify" data-icon="lucide:trash-2" data-width="15"></span></button><p class="text-sm font-bold text-jac-700">$${sub.toLocaleString('es-AR')}</p></div></div>`;
+    });
+    box.innerHTML = html;
+    document.getElementById('cart-total').textContent = '$' + total.toLocaleString('es-AR');
+}
+function toggleCart() {
+    const sb = document.getElementById('cart-sidebar'), ov = document.getElementById('cart-overlay');
+    cartOpen = !cartOpen;
+    if (cartOpen) { sb.classList.remove('hidden','cart-out'); sb.classList.add('flex','cart-in'); ov.classList.remove('hidden'); document.body.style.overflow='hidden'; renderCartItems(); }
+    else { sb.classList.remove('cart-in'); sb.classList.add('cart-out'); ov.classList.add('hidden'); document.body.style.overflow=''; setTimeout(() => { sb.classList.add('hidden'); sb.classList.remove('flex','cart-out'); }, 300); }
+}
+function sendWhatsApp() {
+    if (!cart.length) return;
+    let msg = '🌸 *Pedido desde JACARANDÁ Web*\n\n', total = 0;
+    cart.forEach(item => { const sub = item.price * item.qty; total += sub; msg += `• ${item.name} x${item.qty} — $${sub.toLocaleString('es-AR')}\n`; });
+    msg += `\n💰 *Total: $${total.toLocaleString('es-AR')}*\n\n¡Gracias! 🙌`;
+    window.open('https://wa.me/5491156610599?text=' + encodeURIComponent(msg), '_blank');
+}
+
+function toggleMobile() {
+    mobileOpen = !mobileOpen;
+    document.getElementById('mobile-menu').classList.toggle('hidden', !mobileOpen);
+    document.getElementById('menu-icon').setAttribute('data-icon', mobileOpen ? 'lucide:x' : 'lucide:menu');
+}
+function closeMobile() {
+    mobileOpen = false;
+    document.getElementById('mobile-menu').classList.add('hidden');
+    document.getElementById('menu-icon').setAttribute('data-icon', 'lucide:menu');
+}
+
+function renderFAQ() {
+    const box = document.getElementById('faq-container');
+    faqs.forEach((f, i) => {
+        const div = document.createElement('div');
+        div.className = 'border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-jac-200';
+        div.innerHTML = `
+            <button onclick="toggleFaq(${i})" class="w-full flex items-center justify-between px-6 py-5 text-left group cursor-pointer">
+                <span class="text-sm font-semibold text-gray-900 pr-4 group-hover:text-jac-700 transition-colors">${f.q}</span>
+                <span id="faq-chev-${i}" class="faq-chevron text-gray-400 flex-shrink-0">
+                    <span class="iconify" data-icon="lucide:chevron-down" data-width="18"></span>
+                </span>
+            </button>
+            <div id="faq-ans-${i}" class="faq-answer px-6">
+                <p class="text-sm text-gray-600 leading-relaxed pb-5">${f.a}</p>
+            </div>`;
+        box.appendChild(div);
+    });
+}
+
+function toggleFaq(i) {
+    const ans = document.getElementById('faq-ans-' + i);
+    const chev = document.getElementById('faq-chev-' + i);
+    if (openFaq === i) {
+        ans.style.maxHeight = '0px';
+        ans.classList.remove('open');
+        chev.classList.remove('rotated');
+        openFaq = -1;
+    } else {
+        if (openFaq >= 0) {
+            document.getElementById('faq-ans-' + openFaq).style.maxHeight = '0px';
+            document.getElementById('faq-ans-' + openFaq).classList.remove('open');
+            document.getElementById('faq-chev-' + openFaq).classList.remove('rotated');
+        }
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        ans.classList.add('open');
+        chev.classList.add('rotated');
+        openFaq = i;
+    }
+}
+
+function showToast(msg) {
+    const box = document.getElementById('toast-box');
+    const t = document.createElement('div');
+    t.className = 'toast-in bg-jac-800 text-white text-sm font-medium px-6 py-3 rounded-full shadow-lg pointer-events-auto';
+    t.textContent = msg; box.appendChild(t);
+    setTimeout(() => { t.classList.remove('toast-in'); t.classList.add('toast-out'); setTimeout(() => t.remove(), 300); }, 2000);
+}
+
+function createPetal() {
+    const box = document.getElementById('petals-box');
+    if (box.childElementCount > 12) return;
+    const petal = document.createElement('div');
+    petal.className = 'petal go';
+    const size = 8 + Math.random() * 10;
+    const hue = 255 + Math.random() * 25, sat = 55 + Math.random() * 35, light = 60 + Math.random() * 20, dur = 7 + Math.random() * 7;
+    petal.style.cssText = `left:${Math.random()*100}vw;--sx1:${-50+Math.random()*100}px;--sx2:${-50+Math.random()*100}px;--sx3:${-30+Math.random()*60}px;--sc1:${0.7+Math.random()*0.4};--sc2:${0.3+Math.random()*0.3};--dur:${dur}s;`;
+    petal.innerHTML = `<div style="width:${size}px;height:${size*0.6}px;background:hsl(${hue},${sat}%,${light}%);border-radius:50% 0 50% 50%;opacity:0.85;"></div>`;
+    box.appendChild(petal);
+    setTimeout(() => petal.remove(), dur * 1000 + 500);
+}
+setInterval(createPetal, 2500 + Math.random() * 2000);
+setTimeout(createPetal, 500);
+
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.anim-up').forEach(el => obs.observe(el));
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('shadow-lg', window.scrollY > 20);
+});
+
+renderProducts();
+renderFAQ();
+</script>
+</body>
 </html>
